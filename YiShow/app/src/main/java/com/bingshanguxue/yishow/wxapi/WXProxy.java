@@ -31,7 +31,7 @@ public class WXProxy {
     /**
      * 发送文本到微信
      * */
-    public static void sendTextToWX(String text, int scene){
+    public void sendTextToWX(String text, int scene){
         WXTextObject textObj = new WXTextObject();
         textObj.text = text;
 
@@ -48,7 +48,7 @@ public class WXProxy {
         api.sendReq(req);
     }
 
-    private static String buildTransaction(final String type) {
+    private String buildTransaction(final String type) {
         return (type == null) ? String.valueOf(System.currentTimeMillis()) : type + System.currentTimeMillis();
     }
 

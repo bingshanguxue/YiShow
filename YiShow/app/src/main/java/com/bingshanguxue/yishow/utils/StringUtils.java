@@ -7,8 +7,8 @@ import java.util.Random;
  */
 public class StringUtils {
     /**
-     * 生成随机字符串
-     * @param length 字符串长度
+     * Generate Random String
+     * @param length the length of the random string you want to generate
      * */
     public static String getRandomString(int length) { //length表示生成字符串的长度
         String base = "abcdefghijklmnopqrstuvwxyz0123456789";

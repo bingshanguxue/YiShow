@@ -1,6 +1,6 @@
 package com.bingshanguxue.yishow;
 
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -13,11 +13,9 @@ import android.widget.Toast;
 import com.bingshanguxue.yishow.utils.StringUtils;
 import com.bingshanguxue.yishow.wxapi.WXProxy;
 import com.tencent.mm.sdk.openapi.SendMessageToWX;
-import com.tencent.mm.sdk.openapi.WXMediaMessage;
-import com.tencent.mm.sdk.openapi.WXTextObject;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     private EditText etMessage;
     private Button btnShare;
@@ -35,7 +33,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 String message = etMessage.getText().toString();
                 if(TextUtils.isEmpty(message)){
-                    Toast.makeText(MainActivity.this, "内容不能为空", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.toast_message_empty, Toast.LENGTH_SHORT).show();
                     return;
                 }
 

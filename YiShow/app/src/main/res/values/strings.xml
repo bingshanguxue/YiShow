@@ -1,6 +1,13 @@
 <resources>
     <string name="app_name">冰珊孤雪</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+
+    <string name="button_share">Share</string>
+
+    <string name="hint_et_message">Please input some words</string>
+
+    <string name="toast_message_empty">内容不能为空</string>
+
 </resources>
