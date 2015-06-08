@@ -10,7 +10,7 @@ public class StringUtils {
      * Generate Random String
      * @param length the length of the random string you want to generate
      * */
-    public static String getRandomString(int length) { //length表示生成字符串的长度
+    public static String getRandomString(int length) {
         String base = "abcdefghijklmnopqrstuvwxyz0123456789";
         Random random = new Random();
         StringBuilder sb = new StringBuilder();
