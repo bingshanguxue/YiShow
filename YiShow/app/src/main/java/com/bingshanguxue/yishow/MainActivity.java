@@ -18,7 +18,7 @@ import com.tencent.mm.sdk.openapi.SendMessageToWX;
 public class MainActivity extends Activity {
 
     private EditText etMessage;
-    private Button btnShare;
+    private Button btnShare, btnSend;
 
 
     @Override
@@ -38,6 +38,19 @@ public class MainActivity extends Activity {
                 }
 
                 shareToWeiChatCircle(message);
+            }
+        });
+        btnSend = (Button) findViewById(R.id.button_send);
+        btnSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String message = etMessage.getText().toString();
+                if(TextUtils.isEmpty(message)){
+                    Toast.makeText(MainActivity.this, R.string.toast_message_empty, Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                shareToWeiChat(message);
             }
         });
     }
@@ -70,8 +83,8 @@ public class MainActivity extends Activity {
     private void shareToWeiChatCircle(String text){
         WXProxy.getInstance(this).sendTextToWX(text, SendMessageToWX.Req.WXSceneTimeline);
     }
-    private void shareToWeiChat(){
-        WXProxy.getInstance(this).sendTextToWX(StringUtils.getRandomString(64), SendMessageToWX.Req.WXSceneSession);
+    private void shareToWeiChat(String text){
+        WXProxy.getInstance(this).sendTextToWX(text, SendMessageToWX.Req.WXSceneSession);
     }
 
 }
