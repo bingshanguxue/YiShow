@@ -29,7 +29,7 @@ public class WXProxy {
     }
 
     /**
-     * 发送文本到微信
+     * 鍙戦�佹枃鏈埌寰俊
      * */
     public void sendTextToWX(String text, int scene){
         WXTextObject textObj = new WXTextObject();
