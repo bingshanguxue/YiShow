@@ -5,7 +5,7 @@
 
 
     <string name="button_share">分享</string>
-    <string name="button_send">Send</string>
+    <string name="button_send">发送</string>
 
     <string name="hint_et_message">Please input some words</string>
 
