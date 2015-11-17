@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="com.bingshanguxue.tenyears.AddContactActivity">
+
+    <com.bingshanguxue.tenyears.CustomTextInputLayout
+        android:id="@+id/textinputlayout_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/edit_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_name"/>
+    </com.bingshanguxue.tenyears.CustomTextInputLayout>
+
+    <com.bingshanguxue.tenyears.CustomTextInputLayout
+        android:id="@+id/textinputlayout_telphone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textinputlayout_name">
+        <EditText
+            android:id="@+id/edit_telphone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone"
+            android:hint="@string/hint_telphone"/>
+    </com.bingshanguxue.tenyears.CustomTextInputLayout>
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存"
+        android:layout_below="@+id/textinputlayout_telphone"/>
+
+</RelativeLayout>
