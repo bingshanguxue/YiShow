@@ -15,7 +15,6 @@
  */
 package com.bingshanguxue.yishow.zxing.activity;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -26,7 +25,6 @@ import android.text.ClipboardManager;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -34,12 +32,8 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-
 import com.bingshanguxue.yishow.R;
-import com.bingshanguxue.yishow.app.AppContext;
-import com.bingshanguxue.yishow.app.AppException;
 import com.bingshanguxue.yishow.app.base.BaseActivity;
-import com.bingshanguxue.yishow.app.bean.BarCode;
 import com.bingshanguxue.yishow.app.dialog.CommonDialog;
 import com.bingshanguxue.yishow.app.helper.UIHelper;
 import com.bingshanguxue.yishow.utils.StringUtils;
@@ -53,7 +47,8 @@ import com.google.zxing.Result;
 import java.io.IOException;
 import java.lang.reflect.Field;
 
-import org.apache.http.Header;
+import butterknife.Bind;
+import butterknife.OnClick;
 
 
 /**
@@ -75,11 +70,11 @@ public final class CaptureActivity extends BaseActivity implements
     private InactivityTimer inactivityTimer;
     private BeepManager beepManager;
 
-    private SurfaceView scanPreview = null;
-    private RelativeLayout scanContainer;
-    private RelativeLayout scanCropView;
-    private ImageView scanLine;
-    private ImageView mFlash;
+    @Bind(R.id.capture_preview) SurfaceView scanPreview = null;
+    @Bind(R.id.capture_container) RelativeLayout scanContainer;
+    @Bind(R.id.capture_crop_view) RelativeLayout scanCropView;
+    @Bind(R.id.capture_scan_line) ImageView scanLine;
+    @Bind(R.id.capture_flash) ImageView mFlash;
 
     private Rect mCropRect = null;
 
@@ -101,13 +96,6 @@ public final class CaptureActivity extends BaseActivity implements
 	window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 	setContentView(R.layout.activity_qr_scan);
 
-	scanPreview = (SurfaceView) findViewById(R.id.capture_preview);
-	scanContainer = (RelativeLayout) findViewById(R.id.capture_container);
-	scanCropView = (RelativeLayout) findViewById(R.id.capture_crop_view);
-	scanLine = (ImageView) findViewById(R.id.capture_scan_line);
-	mFlash = (ImageView) findViewById(R.id.capture_flash);
-	mFlash.setOnClickListener(this);
-
 	inactivityTimer = new InactivityTimer(this);
 	beepManager = new BeepManager(this);
 
@@ -120,19 +108,6 @@ public final class CaptureActivity extends BaseActivity implements
 	animation.setRepeatCount(-1);
 	animation.setRepeatMode(Animation.RESTART);
 	scanLine.startAnimation(animation);
-    }
-
-    @SuppressLint("NewApi")
-    @Override
-    protected boolean hasActionBar() {
-
-	if (android.os.Build.VERSION.SDK_INT >= 11) {
-	    getActionBar().hide();
-	    return true;
-	} else {
-	    return false;
-	}
-
     }
 
     @Override
@@ -438,22 +413,10 @@ public final class CaptureActivity extends BaseActivity implements
 	return 0;
     }
 
-    @Override
-    public void onClick(View v) {
-	// TODO Auto-generated method stub
-	switch (v.getId()) {
-	case R.id.capture_flash:
-	    light();
-	    break;
 
-	default:
-	    break;
-	}
-    }
-    
     private boolean flag;
-    
-    protected void light() {
+    @OnClick(R.id.capture_flash)
+    public void light() {
         if (flag == true) {
             flag = false;
             // 开闪光灯
@@ -465,17 +428,5 @@ public final class CaptureActivity extends BaseActivity implements
             cameraManager.offLight();
             mFlash.setBackgroundResource(R.drawable.flash_default);
         }
-    }
-
-    @Override
-    public void initView() {
-	// TODO Auto-generated method stub
-
-    }
-
-    @Override
-    public void initData() {
-	// TODO Auto-generated method stub
-
     }
 }

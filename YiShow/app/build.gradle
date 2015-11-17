@@ -6,7 +6,7 @@ def releaseTime() {
 
 android {
     compileSdkVersion 22
-    buildToolsVersion '23.0.0 rc2'
+    buildToolsVersion '23.0.1'
 
     defaultConfig {
         applicationId "com.bingshanguxue.yishow"
@@ -14,6 +14,11 @@ android {
         targetSdkVersion 22
         versionCode 2
         versionName "1.0.5"
+
+        manifestPlaceholders = [
+                AMAP_API_KEY   : "dfdc6a377bb8f29ef509f0c315606d83", // 高德地图 API key
+                PACKAGE_NAME    : applicationId // apk 包名
+        ]
     }
     buildTypes {
         release {
@@ -26,7 +31,7 @@ android {
                     if (outputFile != null && outputFile.name.endsWith('.apk')) {
                         // 输出apk名称为bingshanguxue_v1.0_2015-01-15_wandoujia.apk
                         //def fileName = "bingshanguxue_v${defaultConfig.versionName}_${releaseTime()}_${variant.productFlavors[0].name}.apk"
-                        def fileName = "yishw_v${defaultConfig.versionName}.${defaultConfig.versionCode}.${releaseTime()}.apk"
+                        def fileName = "yishow_v${defaultConfig.versionName}.${defaultConfig.versionCode}.${releaseTime()}.apk"
                         output.outputFile = new File(outputFile.parent, fileName)
                     }
                 }
@@ -88,4 +93,6 @@ dependencies {
     //高德地图定位SDK
     compile files('libs/AMap_Services_V2.4.0.jar')
     compile files('libs/KJFrameForAndroid_v2.223.jar')
+    //友盟统计分析
+    compile 'com.umeng.analytics:analytics:latest.integration'
 }

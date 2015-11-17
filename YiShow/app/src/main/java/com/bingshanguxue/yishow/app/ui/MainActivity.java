@@ -18,6 +18,7 @@ import com.bingshanguxue.yishow.app.helper.UIHelper;
 import com.bingshanguxue.yishow.utils.ToastUtil;
 import com.bingshanguxue.yishow.wxapi.WXProxy;
 import com.tencent.mm.sdk.openapi.SendMessageToWX;
+import com.umeng.analytics.MobclickAgent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -49,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.button_test_0).setOnClickListener(myOnClickListener);
         findViewById(R.id.button_test_1).setOnClickListener(myOnClickListener);
+    }
+
+    public void onResume() {
+        super.onResume();
+        MobclickAgent.onResume(this);
+    }
+    public void onPause() {
+        super.onPause();
+        MobclickAgent.onPause(this);
     }
 
     @Override

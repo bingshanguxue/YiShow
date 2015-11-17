@@ -2,6 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bingshanguxue.yishow" >
 
+    <!--检测联网方式，区分用户设备使用的是2G、3G或是WiFi-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!--获取用户设备的mac地址，在平板设备上，无法通过imei标示设备，我们会将mac地址作为用户的唯一标识-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许应用程序联网，以便向我们的服务器端发送数据。-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <!--获取用户设备的IMEI，通过IMEI和mac来唯一的标识用户。-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -19,6 +29,11 @@
         </activity>
         <activity android:name=".app.ui.ObservActivity"/>
         <activity android:name=".app.ui.ObservScrollViewActivity"/>
+
+        <!--561f59e367e58e036900358e,友盟后台申请的应用Appkey（Appkey可在统计后台的 统计分析->设置->应用信息 页面查看）-->
+        <meta-data android:value="561f59e367e58e036900358e" android:name="UMENG_APPKEY"/>
+        <!--bingshanguxue,推广渠道名称,自定义，每台设备仅记录首次安装激活的渠道-->
+        <meta-data android:value="bingshanguxue" android:name="UMENG_CHANNEL"/>
     </application>
 
 </manifest>
